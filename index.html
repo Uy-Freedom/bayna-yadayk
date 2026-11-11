@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ug" dir="rtl" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>يۈكسەل - العربية بين يديك (تولۇق تورسىز نۇسخىسى)</title>
+    
+    <!-- Embedded PWA Web Manifest (Data URI for 100% offline standalone App setup) -->
+    <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogItmK2Ybbg9iz2YbbhCAtINin2YTYudix2KjZgNmK2Kkg2KjZitmGINmK2K/ZitmDIiwKICAic2hvcnRfbmFtZSI6ICLQt9mK2Ybbg9iz2YbZhCIsCiAgInN0YXJ0X3VybCI6ICIuL2luZGV4Lmh0bWwiLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwZjE3MmEiLAogICJ0aGVtZV9jb2xvciI6ICIjMGYxNzJhIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9jZG4taWNvbnMtcG5nLmZsYXRpY29uLmNvbS81MTIvMzM4OS8zMzg5MDgxLnBuZyIsCiAgICAgICJzaXplcyI6ICI1MTJ4NTEyIiwKICAgICAgInR5cGUiOiAiaW1hZ2UvcG5nIgogICAgfQogIF0KfQ==">
+    <meta name="theme-color" content="#10b981">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'Almarai', 'system-ui', '-apple-system', 'sans-serif'],
+                        arabic: ['Amiri', 'Traditional Arabic', 'Tahoma', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Tajawal:wght@300;400;500;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Glassmorphism styling */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* Animations & Custom Scrollbar */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.4);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(16, 185, 129, 0.8);
+        }
+    </style>
+</head>
+<body class="h-full bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 selection:bg-brand-500 selection:text-white flex flex-col">
+
+    <!-- Top Floating Navigation -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-200/50 dark:border-slate-800/50 px-4 lg:px-8 py-3">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- App Logo & Branding -->
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-brand-500/30">
+                    <i class="fa-solid fa-book-open-reader text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-base lg:text-xl tracking-tight bg-gradient-to-r from-brand-600 to-teal-500 dark:from-brand-400 dark:to-teal-300 bg-clip-text text-transparent">يۈكسەل · العربية بين يديك</h1>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">ئەرەب تىلى ئۆگىنىش سۇپىسى (تورسىز نۇسخا)</p>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation Menu -->
+            <nav class="hidden md:flex items-center space-x-1 space-x-reverse bg-slate-200/70 dark:bg-slate-900/80 p-1.5 rounded-2xl border border-slate-300/40 dark:border-slate-800">
+                <button onclick="switchTab('lessons')" id="nav-btn-lessons" class="nav-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white dark:bg-slate-800 shadow-sm text-brand-600 dark:text-brand-400 flex items-center space-x-2 space-x-reverse">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>دەرىسلەر</span>
+                </button>
+                <button onclick="switchTab('vocab')" id="nav-btn-vocab" class="nav-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center space-x-2 space-x-reverse">
+                    <i class="fa-solid fa-book font-normal"></i>
+                    <span>يېڭى سۆزلۈكلەر</span>
+                </button>
+                <button onclick="switchTab('quiz')" id="nav-btn-quiz" class="nav-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center space-x-2 space-x-reverse">
+                    <i class="fa-solid fa-clipboard-question"></i>
+                    <span>سىناق ئىمتىھان</span>
+                </button>
+                <button onclick="switchTab('settings')" id="nav-btn-settings" class="nav-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center space-x-2 space-x-reverse">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>تەڭشەك</span>
+                </button>
+            </nav>
+
+            <!-- Actions Header (Audio Control & Theme) -->
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <div id="offline-badge" class="hidden sm:flex items-center space-x-1 space-x-reverse text-[11px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-500/20">
+                    <i class="fa-solid fa-wifi text-xs"></i>
+                    <span>تورسىز تەييار</span>
+                </div>
+                <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-2xl glass-card flex items-center justify-center text-slate-700 dark:text-slate-300 hover:scale-105 transition-all shadow-sm">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 glass-panel border-t border-slate-200/60 dark:border-slate-800 px-3 py-2 shadow-2xl">
+        <div class="flex justify-around items-center">
+            <button onclick="switchTab('lessons')" id="mob-btn-lessons" class="mob-btn flex flex-col items-center space-y-1 text-brand-600 dark:text-brand-400">
+                <i class="fa-solid fa-graduation-cap text-base"></i>
+                <span class="text-[10px] font-bold">دەرىسلەر</span>
+            </button>
+            <button onclick="switchTab('vocab')" id="mob-btn-vocab" class="mob-btn flex flex-col items-center space-y-1 text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-book text-base"></i>
+                <span class="text-[10px] font-medium">سۆزلۈكلەر</span>
+            </button>
+            <button onclick="switchTab('quiz')" id="mob-btn-quiz" class="mob-btn flex flex-col items-center space-y-1 text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-clipboard-question text-base"></i>
+                <span class="text-[10px] font-medium">سىناق</span>
+            </button>
+            <button onclick="switchTab('settings')" id="mob-btn-settings" class="mob-btn flex flex-col items-center space-y-1 text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-sliders text-base"></i>
+                <span class="text-[10px] font-medium">تەڭشەك</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 lg:px-8 py-6 pb-24 md:pb-12">
+
+        <!-- ================= TAB 1: LESSONS ================= -->
+        <section id="tab-lessons" class="tab-content space-y-6">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-brand-700 via-teal-700 to-emerald-800 text-white p-6 lg:p-10 shadow-xl shadow-brand-600/20">
+                <div class="absolute -left-10 -bottom-10 w-60 h-60 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-2xl space-y-3">
+                    <span class="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold">
+                        <i class="fa-solid fa-star text-amber-300"></i> العربية بين يديك - 1-4 بۆلەكلەر
+                    </span>
+                    <h2 class="text-2xl lg:text-4xl font-extrabold tracking-tight">ئەرەب تىلىنى ئاسان ئۆگىنىڭ!</h2>
+                    <p class="text-emerald-100 text-xs lg:text-sm leading-relaxed">
+                        بۇ ئەپ ئارقىلىق «العربية بين يديك» كىتابىدىكى 1-بۆلەكتىن 4-بۆلەكگىچە بولغان بارلىق سۆھبەت، ئاتالغۇلار ۋە ئەر كىشىنىڭ ئاۋازىدىكى ئاۋازلىق ئوقۇش ئىقتىدارىدىن تولۇق تورسىز پايدىلىنالايسىز.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Units Selector Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Unit 1 -->
+                <div onclick="openLesson(1)" class="glass-card rounded-3xl p-5 cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all border border-brand-500/20 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-emerald-500"></div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full">1-بۆلەك</span>
+                        <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-arabic text-xl font-bold mb-1 text-slate-900 dark:text-white">الوحدة الأولى: التَّحِيَّةُ وَالتَّعَارُفُ</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">سەلاملىشىش ۋە تونۇشۇش</p>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-slate-200/50 dark:border-slate-800">
+                        <span><i class="fa-solid fa-comments ml-1"></i> 3 سۆھبەت</span>
+                        <span><i class="fa-solid fa-book-open ml-1"></i> 10 سۆزلۈك</span>
+                    </div>
+                </div>
+
+                <!-- Unit 2 -->
+                <div onclick="openLesson(2)" class="glass-card rounded-3xl p-5 cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all border border-teal-500/20 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-teal-500"></div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold bg-teal-100 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 px-3 py-1 rounded-full">2-بۆلەك</span>
+                        <div class="w-8 h-8 rounded-xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center group-hover:bg-teal-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-arabic text-xl font-bold mb-1 text-slate-900 dark:text-white">الوحدة الثانية: الْأُسْرَةُ</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">ئائىلە ۋە تۇغقانلار</p>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-slate-200/50 dark:border-slate-800">
+                        <span><i class="fa-solid fa-comments ml-1"></i> 2 سۆھبەت</span>
+                        <span><i class="fa-solid fa-book-open ml-1"></i> 10 سۆزلۈك</span>
+                    </div>
+                </div>
+
+                <!-- Unit 3 -->
+                <div onclick="openLesson(3)" class="glass-card rounded-3xl p-5 cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all border border-cyan-500/20 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-cyan-500"></div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold bg-cyan-100 dark:bg-cyan-950/80 text-cyan-700 dark:text-cyan-300 px-3 py-1 rounded-full">3-بۆلەك</span>
+                        <div class="w-8 h-8 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-arabic text-xl font-bold mb-1 text-slate-900 dark:text-white">الوحدة الثالثة: السَّكَنُ</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">ئۆي ۋە ئولتۇراق جاي</p>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-slate-200/50 dark:border-slate-800">
+                        <span><i class="fa-solid fa-comments ml-1"></i> 2 سۆھبەت</span>
+                        <span><i class="fa-solid fa-book-open ml-1"></i> 10 سۆزلۈك</span>
+                    </div>
+                </div>
+
+                <!-- Unit 4 -->
+                <div onclick="openLesson(4)" class="glass-card rounded-3xl p-5 cursor-pointer hover:shadow-xl hover:scale-[1.02] transition-all border border-amber-500/20 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-amber-500"></div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full">4-بۆلەك</span>
+                        <div class="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-arabic text-xl font-bold mb-1 text-slate-900 dark:text-white">الوحدة الرابعة: الطَّعَامُ وَالشَّرَابُ</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">يېمەك-ئىچمەك</p>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-slate-200/50 dark:border-slate-800">
+                        <span><i class="fa-solid fa-comments ml-1"></i> 2 سۆھبەت</span>
+                        <span><i class="fa-solid fa-book-open ml-1"></i> 10 سۆزلۈك</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Lesson Content Viewer -->
+            <div id="lesson-detail-container" class="mt-6">
+                <!-- Instruction state -->
+                <div class="glass-panel rounded-3xl p-8 text-center space-y-3">
+                    <div class="w-14 h-14 bg-brand-500/10 text-brand-600 rounded-2xl mx-auto flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-hand-pointer animate-bounce"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">بۆلەكنى تاللاڭ</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs max-w-sm mx-auto">يۇقىرىدىكى بۆلەكلەردىن بىرنى چېكىش ئارقىلىق ئەرەبچە دىئالوگ، ئۇيغۇرچە تەرجىمىسى ۋە ئاۋازلىق ئوقۇشنى كۆرۈڭ.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: VOCABULARY ================= -->
+        <section id="tab-vocab" class="tab-content hidden space-y-6">
+            <!-- Vocabulary Top Panel -->
+            <div class="glass-panel rounded-3xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-extrabold mb-1">يېڭى سۆزلۈكلەر ئامبىرى</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">1-4 بۆلەكلەرگىچە بولغان بارلىق سۆزلەر</p>
+                </div>
+                <div class="relative w-full md:w-80">
+                    <span class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" id="vocab-search" oninput="filterVocabulary(this.value)" placeholder="سۆز ئىزدەش (ئەرەبچە / ئۇيغۇرچە)..." class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-2xl py-2.5 pr-10 pl-4 text-xs focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all">
+                </div>
+            </div>
+
+            <!-- Vocabulary Cards Grid -->
+            <div id="vocab-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: QUIZ ================= -->
+        <section id="tab-quiz" class="tab-content hidden space-y-6">
+            <div id="quiz-wrapper" class="glass-panel rounded-3xl p-6 lg:p-10 max-w-2xl mx-auto text-center space-y-6">
+                <div class="w-20 h-20 bg-gradient-to-tr from-brand-600 to-teal-400 text-white rounded-3xl mx-auto flex items-center justify-center text-3xl shadow-xl shadow-brand-500/30">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div class="space-y-2">
+                    <h2 class="text-2xl font-extrabold">بىلىم سىناق ئىمتىھانى</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs max-w-md mx-auto">1-4 بۆلەكلەر بويىچە بىلىمىڭىزنى سىناپ كۆرۈڭ.</p>
+                </div>
+                <button onclick="startQuiz()" class="px-8 py-3.5 bg-gradient-to-r from-brand-600 to-teal-600 text-white font-bold rounded-2xl shadow-lg shadow-brand-600/30 hover:scale-105 transition-all">
+                    <i class="fa-solid fa-play ml-2"></i> سىناقنى باشلاش
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: SETTINGS ================= -->
+        <section id="tab-settings" class="tab-content hidden space-y-6">
+            <div class="glass-panel rounded-3xl p-6 lg:p-8 max-w-2xl mx-auto space-y-6">
+                <h2 class="text-xl font-extrabold border-b border-slate-200/60 dark:border-slate-800 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-brand-500"></i> تەڭشەكلەر ۋە ئاۋاز تەڭشەكلىرى
+                </h2>
+
+                <!-- Speech Rate & Pitch Controls -->
+                <div class="space-y-4">
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-slate-700 dark:text-slate-300">ئاۋاز ئوقۇش سۈرئىتى (Speed)</label>
+                        <input type="range" id="speech-rate" min="0.5" max="1.5" step="0.1" value="0.85" onchange="updateSpeechSettings()" class="w-full accent-brand-500">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-slate-700 dark:text-slate-300">ئاۋاز دوڭلۇقى (Pitch)</label>
+                        <input type="range" id="speech-pitch" min="0.5" max="1.5" step="0.1" value="0.9" onchange="updateSpeechSettings()" class="w-full accent-brand-500">
+                    </div>
+                </div>
+
+                <!-- PWA Installation Box -->
+                <div class="p-4 rounded-2xl bg-brand-500/10 border border-brand-500/20 space-y-2">
+                    <h3 class="text-sm font-bold text-brand-700 dark:text-brand-300"><i class="fa-solid fa-mobile-screen ml-1"></i> تېلېفونغا ئورنىتىۋېلىش</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400">بۇ تور بەتنى تېلېفۇنىڭىزنىڭ باش ئېكرانىغا قوشۇۋالسىڭىز، تورسىز ھالەتتىمۇ دەل ئۆز ئەينى كۆزنەك سۈپىتىدە ئىشلەيدۇ.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JavaScript Data and Core Logic -->
+    <script>
+        // --- COMPLETE LESSON DATA (UNITS 1 - 4) ---
+        const lessonsData = {
+            1: {
+                title: "الوحدة الأولى: التَّحِيَّةُ وَالتَّعَارُفُ",
+                subtitle: "سەلاملىشىش ۋە تونۇشۇش",
+                dialogues: [
+                    {
+                        title: "الحوار الأول (1-سۆھبەت - ئەرلەر)",
+                        lines: [
+                            { ar: "السَّلَامُ عَلَيْكُمْ", ug: "ئەسسالامۇ ئەلەيكۇم", speaker: "خَالِد" },
+                            { ar: "وَعَلَيْكُمُ السَّلَامُ", ug: "ۋەئەلەيكۇم ئەسسالام", speaker: "خَلِيل" },
+                            { ar: "اسْمِي خَالِد، مَا اسْمُكَ؟", ug: "ئىسمىم خالىد، ئىسمىڭىز نېمە؟", speaker: "خَالِد" },
+                            { ar: "اسْمِي خَلِيل", ug: "ئىسمىم خېلىل", speaker: "خَلِيل" },
+                            { ar: "كَيْفَ حَالُكَ؟", ug: "ئەھۋالىڭىز قانداق؟", speaker: "خَالِد" },
+                            { ar: "بِخَيْرٍ، وَالْحَمْدُ لِلَّهِ، وَكَيْفَ حَالُكَ أَنْتَ؟", ug: "ياخشى، ئاللاھقا شۈكرى، سىزنىڭ ئەھۋالىڭىز قانداق؟", speaker: "خَلِيل" },
+                            { ar: "بِخَيْرٍ، وَالْحَمْدُ لِلَّهِ", ug: "ياخشى، ئاللاھقا شۈكرى", speaker: "خَالِد" }
+                        ]
+                    },
+                    {
+                        title: "الحوار الثاني (2-سۆھبەت - مەنبە)",
+                        lines: [
+                            { ar: "مِنْ أَيْنَ أَنْتَ؟", ug: "سىز قەيەردىن؟", speaker: "مُحَمَّد" },
+                            { ar: "أَنَا مِنْ بَاكِسْتَانَ", ug: "مەن باكىستاندىن", speaker: "شَرِيف" },
+                            { ar: "هَلْ أَنْتَ بَاكِسْتَانِيٌّ؟", ug: "سىز باكىستانلىقمۇ؟", speaker: "مُحَمَّد" },
+                            { ar: "نَعَمْ، أَنَا بَاكِسْتَانِيٌّ. وَمَا جِنْسِيَّتُكَ أَنْتَ؟", ug: "ھەئە، مەن باكىستانلىق. سىز قايسى مىللەتتىن (مەملىكەتتىن)؟", speaker: "شَرِيف" },
+                            { ar: "أَنَا تُرْكِيٌّ، أَنَا مِنْ تُرْكِيَا", ug: "مەن تۈركىيەلىك، مەن تۈركىيەدىن", speaker: "مُحَمَّد" },
+                            { ar: "أَهْلًا وَسَهْلًا", ug: "خۇش كەپسىز!", speaker: "شَرِيف" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { ar: "مَرۡحَبًا", ug: "مەرھابا" },
+                    { ar: "اسْمٌ", ug: "ئىسىم" },
+                    { ar: "كَيْفَ", ug: "قانداق" },
+                    { ar: "حَالٌ", ug: "ھال / ئەھۋال" },
+                    { ar: "بِخَيْرٍ", ug: "ياخشى" },
+                    { ar: "مِنْ أَيْنَ", ug: "قەيەردىن" },
+                    { ar: "نَعَمْ", ug: "ھەئە" },
+                    { ar: "لَا", ug: "ياق" },
+                    { ar: "جِنْسِيَّةٌ", ug: "پۇقرالىق / مىللەت" },
+                    { ar: "أَهْلًا وَسَهْلًا", ug: "خۇش كەپسىز" }
+                ]
+            },
+            2: {
+                title: "الوحدة الثانية: الْأُسْرَةُ",
+                subtitle: "ئائىلە ۋە تۇغقانلار",
+                dialogues: [
+                    {
+                        title: "الحوار الأول (1-سۆھبەت - ئائىلە تونۇشتۇرۇش)",
+                        lines: [
+                            { ar: "هَذِهِ صُورَةُ أُسْرَتِي", ug: "بۇ مېنىڭ ئائىلەمنىڭ سۈرىتى", speaker: "عَلِيّ" },
+                            { ar: "مَا شَاءَ اللَّهُ! مَنْ هَذَا؟", ug: "ما شاء الله! بۇ كىم؟", speaker: "عُمَر" },
+                            { ar: "هَذَا وَالِدِي عَدْنَان، هُوَ مُهَنْدِسٌ", ug: "بۇ دادام ئادنان، ئۇ ئىنژېنېر", speaker: "عَلِيّ" },
+                            { ar: "وَمَنْ هَذِهِ؟", ug: "بۇ كىم؟ (ئايال)", speaker: "عُمَر" },
+                            { ar: "هَذِهِ وَالِدَتِي سَعِيدَة، هِيَ طَبِيبَةٌ", ug: "بۇ ئاپام سەئىدە، ئۇ دوختۇر", speaker: "عَلِيّ" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { ar: "أُسْرَةٌ", ug: "ئائىلە" },
+                    { ar: "وَالِدٌ", ug: "دائىما / دادا" },
+                    { ar: "وَالِدَةٌ", ug: "ئاپا" },
+                    { ar: "مُهَنْدِسٌ", ug: "ئىنژېنېر" },
+                    { ar: "طَبِيبٌ", ug: "دوختۇر" },
+                    { ar: "طَالِبٌ", ug: "ئوقۇغۇچى" },
+                    { ar: "مُدَرِّسٌ", ug: "ئوقۇتقۇچى" },
+                    { ar: "أَخٌ", ug: "ئاكا / ئىنى" },
+                    { ar: "أُخْتٌ", ug: "ھەدە / سىڭىل" },
+                    { ar: "صُورَةٌ", ug: "سۈرەت" }
+                ]
+            },
+            3: {
+                title: "الوحدة الثالثة: السَّكَنُ",
+                subtitle: "ئۆي ۋە ئولتۇراق جاي",
+                dialogues: [
+                    {
+                        title: "الحوار الأول (1-سۆھبەت - ئۆي ئىزدەش)",
+                        lines: [
+                            { ar: "أَيْنَ تَسْكُنُ؟", ug: "قەيەردە تۇرىسىز؟", speaker: "حَسَّان" },
+                            { ar: "أَسْكُنُ فِي شَقَّةٍ جَمِيلَةٍ", ug: "مەن بىر گۈزەل پاتىرا ئۆيدە تۇرىمەن", speaker: "أَحْمَد" },
+                            { ar: "فِي أَيِّ حَيٍّ الشَّقَّةُ؟", ug: "ئۆي قايسى مەھەللىدە؟", speaker: "حَسَّان" },
+                            { ar: "الشَّقَّةُ فِي حَيِّ الْمَطَارِ", ug: "ئۆي ئايرودروم مەھەللىسىدە", speaker: "أَحْمَد" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { ar: "سَكَنٌ", ug: "ئولتۇراق جاي" },
+                    { ar: "شَقَّةٌ", ug: "پاتىرا ئۆي" },
+                    { ar: "بَيْتٌ", ug: "ئۆي" },
+                    { ar: "حَيٌّ", ug: "مەھەللە" },
+                    { ar: "غُرْفَةٌ", ug: "ئۆي / خانا" },
+                    { ar: "مَطْبَخٌ", ug: "ئاشخانا" },
+                    { ar: "حَمَّامٌ", ug: "ئامبار / ھەمام" },
+                    { ar: "أَثَاثٌ", ug: "ئۆي جابدۇقلىرى" },
+                    { ar: "أَرِيكَةٌ", ug: "سوفا" },
+                    { ar: "سَرِيرٌ", ug: "كاروولا" }
+                ]
+            },
+            4: {
+                title: "الوحدة الرابعة: الطَّعَامُ وَالشَّرَابُ",
+                subtitle: "يېمەك-ئىچمەك",
+                dialogues: [
+                    {
+                        title: "الحوار الأول (1-سۆھبەت - تاماق ۋاقتى)",
+                        lines: [
+                            { ar: "كَمْ وَجْبَةً تَأْكُلُ فِي الْيَوْمِ؟", ug: "بىر كۈندە نېچە ۋاق تاماق يەيسىز؟", speaker: "قَاسِم" },
+                            { ar: "أَأْكُلُ ثَلَاثَ وَجَبَاتٍ: الْفَطُورَ وَالْغَدَاءَ وَالْعَشَاءَ", ug: "ئۈچ ۋاق تاماق يەيمەن: ئەتىگەنلىك، چۈشلىك ۋە كەچلىك تاماق", speaker: "سَالِم" },
+                            { ar: "مَاذَا تَأْكُلُ فِي الْغَدَاءِ؟", ug: "چۈشلىك تاماقتا نېمە يەيسىز؟", speaker: "قَاسِم" },
+                            { ar: "أَأْكُلُ اللَّحْمَ وَالدَّجَاجَ وَالأَرُزَّ", ug: "گۆش، توخۇ گۆشى ۋە گۈرۈچ يەيمەن", speaker: "سَالِم" },
+                            { ar: "وَمَاذَا تَشْرَبُ؟", ug: "نېمە ئىچىسىز؟", speaker: "قَاسِم" },
+                            { ar: "أَشْرَبُ الشَّايَ وَالْمَاءَ", ug: "چاي ۋە سۇ ئىچىپ كېلىمەن", speaker: "سَالِم" }
+                        ]
+                    }
+                ],
+                vocab: [
+                    { ar: "طَعَامٌ", ug: "يېمەكلىك" },
+                    { ar: "شَرَابٌ", ug: "ئىچىملىك" },
+                    { ar: "وَجْبَةٌ", ug: "ۋاقلىق تاماق" },
+                    { ar: "فَطُورٌ", ug: "ئەتىگەنلىك تاماق" },
+                    { ar: "غَدَاءٌ", ug: "چۈشلىك تاماق" },
+                    { ar: "عَشَاءٌ", ug: "كەچلىك تاماق" },
+                    { ar: "لَحْمٌ", ug: "گۆش" },
+                    { ar: "دَجَاجٌ", ug: "توخۇ گۆشى" },
+                    { ar: "أَرُزٌّ", ug: "گۈرۈچ" },
+                    { ar: "مَاءٌ", ug: "سۇ" }
+                ]
+            }
+        };
+
+        // --- CONSOLIDATED VOCABULARY ---
+        let allVocab = [];
+        Object.keys(lessonsData).forEach(key => {
+            lessonsData[key].vocab.forEach(v => {
+                allVocab.push({ ...v, lesson: key });
+            });
+        });
+
+        // --- QUIZ DATA ---
+        const quizQuestions = [
+            { question: "«مَرْحَبًا» سۆزىنىڭ ئۇيغۇرچە مەنىسى نېمە؟", options: ["خەيرلىك سەھەر", "مەرھابا", "ئەسسالامۇ ئەلەيكۇم", "خەير-خۇش"], answer: 1 },
+            { question: "«طَبِيبٌ» سۆزى نېمىنى بىلدۈرىدۇ؟", options: ["ئىنژېنېر", "ئوقۇتقۇچى", "دوختۇر", "ئوقۇغۇچى"], answer: 2 },
+            { question: "«غُرْفَةٌ» سۆزىنىڭ ئۇيغۇرچە تەرجىمىسى قايسى؟", options: ["خانا / ئۆي", "ئاشخانا", "ئامبار", "پاتىرا"], answer: 0 },
+            { question: "«أَرُزٌّ» سۆزى نېمىنى بىلدۈرىدۇ؟", options: ["گۆش", "سۇ", "چاي", "گۈرۈچ"], answer: 3 },
+            { question: "«مِنْ أَيْنَ أَنْتَ؟» نىڭ مەنىسى نېمە؟", options: ["ئىسمىڭىز نېمە؟", "سىز قەيەردىن؟", "ئەھۋالىڭىز قانداق؟", "قەيەردە تۇرىسىز؟"], answer: 1 }
+        ];
+
+        let currentQuizIndex = 0;
+        let score = 0;
+        let speechRate = 0.85;
+        let speechPitch = 0.9;
+
+        // --- SPEECH SYNTHESIS ENGINE (Arabic Voice) ---
+        function speakArabic(text) {
+            if (!('speechSynthesis' in window)) {
+                alert('بۇ ئۈسكۈنىدە ئاۋاز ئوقۇش ئىقتىدارى قوللىنىلمايدۇ.');
+                return;
+            }
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ar-SA';
+            utterance.rate = speechRate;
+            utterance.pitch = speechPitch;
+
+            const voices = window.speechSynthesis.getVoices();
+            const arabicVoice = voices.find(v => v.lang.startsWith('ar') && (v.name.includes('Male') || v.name.includes('Maged') || v.name.includes('Tariq') || v.name.includes('Naayf')));
+            if (arabicVoice) utterance.voice = arabicVoice;
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function updateSpeechSettings() {
+            speechRate = parseFloat(document.getElementById('speech-rate').value);
+            speechPitch = parseFloat(document.getElementById('speech-pitch').value);
+        }
+
+        // --- TAB SWITCHING ---
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center space-x-2 space-x-reverse";
+            });
+            const activeNav = document.getElementById(`nav-btn-${tabId}`);
+            if (activeNav) {
+                activeNav.className = "nav-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white dark:bg-slate-800 shadow-sm text-brand-600 dark:text-brand-400 flex items-center space-x-2 space-x-reverse";
+            }
+
+            document.querySelectorAll('.mob-btn').forEach(btn => {
+                btn.className = "mob-btn flex flex-col items-center space-y-1 text-slate-500 dark:text-slate-400";
+            });
+            const activeMob = document.getElementById(`mob-btn-${tabId}`);
+            if (activeMob) {
+                activeMob.className = "mob-btn flex flex-col items-center space-y-1 text-brand-600 dark:text-brand-400";
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- RENDER LESSON DETAIL ---
+        function openLesson(lessonNum) {
+            const lesson = lessonsData[lessonNum];
+            const container = document.getElementById('lesson-detail-container');
+
+            let html = `
+                <div class="glass-panel rounded-3xl p-6 lg:p-8 space-y-8 animate-fade-in">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200/60 dark:border-slate-800 pb-5 gap-4">
+                        <div>
+                            <span class="text-xs font-bold bg-brand-500/10 text-brand-600 dark:text-brand-400 px-3 py-1 rounded-full">${lessonNum}-بۆلەك</span>
+                            <h2 class="font-arabic text-2xl lg:text-3xl font-extrabold mt-2 text-slate-900 dark:text-white">${lesson.title}</h2>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${lesson.subtitle}</p>
+                        </div>
+                        <button onclick="document.getElementById('lesson-detail-container').innerHTML=''" class="text-xs bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 px-3.5 py-1.5 rounded-xl transition-all self-start">
+                            <i class="fa-solid fa-xmark ml-1"></i> تاقاش
+                        </button>
+                    </div>
+            `;
+
+            // Dialogues Section
+            html += `<div class="space-y-6"><h3 class="text-lg font-bold flex items-center text-brand-600 dark:text-brand-400"><i class="fa-solid fa-comments ml-2"></i> دىئالوگلار (الحوارات)</h3>`;
+            lesson.dialogues.forEach(dlg => {
+                html += `
+                    <div class="glass-card rounded-2xl p-4 space-y-3">
+                        <h4 class="font-bold text-xs text-slate-500 dark:text-slate-400 border-b border-slate-200/40 dark:border-slate-800 pb-2">${dlg.title}</h4>
+                        <div class="space-y-3">
+                `;
+                dlg.lines.forEach(line => {
+                    html += `
+                        <div class="flex items-start justify-between bg-white/60 dark:bg-slate-900/60 p-3.5 rounded-xl border border-slate-200/50 dark:border-slate-800 gap-3">
+                            <div class="space-y-1 flex-1">
+                                <span class="text-[10px] bg-brand-500/10 text-brand-600 dark:text-brand-400 px-2 py-0.5 rounded font-bold">${line.speaker}</span>
+                                <p class="font-arabic text-xl font-bold text-slate-900 dark:text-white" dir="rtl">${line.ar}</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">${line.ug}</p>
+                            </div>
+                            <button onclick="speakArabic('${line.ar}')" class="w-9 h-9 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 hover:bg-brand-500 hover:text-white flex items-center justify-center transition-all shrink-0">
+                                <i class="fa-solid fa-volume-high text-xs"></i>
+                            </button>
+                        </div>
+                    `;
+                });
+                html += `</div></div>`;
+            });
+            html += `</div>`;
+
+            // Vocabulary List
+            html += `
+                <div class="space-y-4 pt-4 border-t border-slate-200/60 dark:border-slate-800">
+                    <h3 class="text-lg font-bold flex items-center text-teal-600 dark:text-teal-400"><i class="fa-solid fa-book-bookmark ml-2"></i> بۇ بۆلەكتىكى سۆزلەر</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            `;
+            lesson.vocab.forEach(v => {
+                html += `
+                    <div class="glass-card p-3.5 rounded-2xl flex items-center justify-between">
+                        <div>
+                            <p class="font-arabic text-lg font-bold text-slate-900 dark:text-white">${v.ar}</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">${v.ug}</p>
+                        </div>
+                        <button onclick="speakArabic('${v.ar}')" class="w-8 h-8 rounded-lg bg-teal-500/10 text-teal-600 dark:text-teal-400 hover:bg-teal-500 hover:text-white flex items-center justify-center transition-all">
+                            <i class="fa-solid fa-volume-high text-xs"></i>
+                        </button>
+                    </div>
+                `;
+            });
+            html += `</div></div></div>`;
+
+            container.innerHTML = html;
+            container.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- VOCABULARY TAB RENDER ---
+        function renderVocabulary(items) {
+            const grid = document.getElementById('vocab-grid');
+            if (items.length === 0) {
+                grid.innerHTML = `<div class="col-span-full py-10 text-center text-slate-400 text-xs">ھېچقانداق سۆز تېپىلمىدى.</div>`;
+                return;
+            }
+            let html = '';
+            items.forEach(v => {
+                html += `
+                    <div class="glass-card rounded-2xl p-4 flex flex-col justify-between space-y-3 hover:shadow-lg transition-all">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold bg-brand-500/10 text-brand-600 dark:text-brand-400 px-2 py-0.5 rounded-full">${v.lesson}-بۆلەك</span>
+                                <p class="font-arabic text-2xl font-bold mt-1 text-slate-900 dark:text-white">${v.ar}</p>
+                                <p class="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">${v.ug}</p>
+                            </div>
+                            <button onclick="speakArabic('${v.ar}')" class="w-9 h-9 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 hover:bg-brand-500 hover:text-white flex items-center justify-center transition-all">
+                                <i class="fa-solid fa-volume-high text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+
+        function filterVocabulary(q) {
+            const query = q.trim().toLowerCase();
+            const filtered = allVocab.filter(v => v.ar.toLowerCase().includes(query) || v.ug.toLowerCase().includes(query));
+            renderVocabulary(filtered);
+        }
+
+        // --- QUIZ RENDER & LOGIC ---
+        function startQuiz() {
+            currentQuizIndex = 0;
+            score = 0;
+            renderQuizQuestion();
+        }
+
+        function renderQuizQuestion() {
+            const wrapper = document.getElementById('quiz-wrapper');
+            if (currentQuizIndex >= quizQuestions.length) {
+                let percent = Math.round((score / quizQuestions.length) * 100);
+                wrapper.innerHTML = `
+                    <div class="space-y-6 py-4 animate-fade-in">
+                        <div class="w-20 h-20 bg-gradient-to-tr from-brand-600 to-teal-400 text-white rounded-full mx-auto flex items-center justify-center text-3xl shadow-xl shadow-brand-500/30">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h2 class="text-2xl font-extrabold">ئىمتىھان ئاخىرلاشتى!</h2>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">نەتىجىڭىز: <span class="text-brand-600 dark:text-brand-400 font-bold text-lg">${score} / ${quizQuestions.length}</span> (${percent}%)</p>
+                        </div>
+                        <button onclick="startQuiz()" class="px-6 py-2.5 bg-brand-600 text-white font-bold text-xs rounded-xl shadow-lg shadow-brand-600/30 hover:scale-105 transition-all">
+                            <i class="fa-solid fa-rotate-right ml-1"></i> قايتا سىناش
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            const q = quizQuestions[currentQuizIndex];
+            let html = `
+                <div class="space-y-5 text-right animate-fade-in">
+                    <div class="flex items-center justify-between text-xs font-semibold text-slate-400 border-b border-slate-200/60 dark:border-slate-800 pb-2">
+                        <span>سۇئال ${currentQuizIndex + 1} / ${quizQuestions.length}</span>
+                        <span>ئومۇمىي نومۇر: ${score}</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">${q.question}</h3>
+                    <div class="grid grid-cols-1 gap-2.5">
+            `;
+
+            q.options.forEach((opt, idx) => {
+                html += `
+                    <button onclick="checkAnswer(${idx}, ${q.answer})" class="quiz-option glass-card p-3.5 rounded-xl text-right text-xs font-medium hover:bg-brand-500/10 hover:border-brand-500 transition-all flex items-center justify-between">
+                        <span>${opt}</span>
+                        <span class="w-6 h-6 rounded-lg bg-slate-200/50 dark:bg-slate-800 flex items-center justify-center text-[10px]">${idx + 1}</span>
+                    </button>
+                `;
+            });
+            html += `</div></div>`;
+            wrapper.innerHTML = html;
+        }
+
+        function checkAnswer(selected, correct) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach((opt, idx) => {
+                opt.disabled = true;
+                if (idx === correct) opt.classList.add('bg-emerald-500/20', 'border-emerald-500');
+                else if (idx === selected) opt.classList.add('bg-rose-500/20', 'border-rose-500');
+            });
+
+            if (selected === correct) score++;
+            setTimeout(() => {
+                currentQuizIndex++;
+                renderQuizQuestion();
+            }, 1000);
+        }
+
+        // --- DARK MODE ---
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = "fa-solid fa-moon";
+            } else {
+                html.classList.add('dark');
+                icon.className = "fa-solid fa-sun";
+            }
+        }
+
+        // --- INLINE SERVICE WORKER FOR 100% OFFLINE FUNCTIONALITY ---
+        if ('serviceWorker' in navigator) {
+            const swCode = `
+                const CACHE_NAME = 'yuksel-v2';
+                self.addEventListener('install', (e) => {
+                    self.skipWaiting();
+                });
+                self.addEventListener('activate', (e) => {
+                    e.waitUntil(clients.claim());
+                });
+                self.addEventListener('fetch', (e) => {
+                    e.respondWith(
+                        fetch(e.request).catch(() => caches.match(e.request))
+                    );
+                });
+            `;
+            const blob = new Blob([swCode], { type: 'application/javascript' });
+            navigator.serviceWorker.register(URL.createObjectURL(blob))
+                .then(() => document.getElementById('offline-badge').classList.remove('hidden'))
+                .catch(err => console.log('SW reg error:', err));
+        }
+
+        // Onload initialization
+        window.onload = function() {
+            renderVocabulary(allVocab);
+        };
+    </script>
+</body>
+</html>
